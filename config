@@ -1,0 +1,11 @@
+# service account
+LOOP=5
+# namespace
+NS=asm-perf
+# kubeconfig of user's kubenetes cluster
+USER_CONFIG=$HOME/shop_config/ack_bj
+# kubeconfig of user's servicemesh cluster
+MESH_CONFIG=$HOME/shop_config/asm_175
+# istio source code path
+ISTIO_SRC=${HOME}/shop/istio-1.7.5
+

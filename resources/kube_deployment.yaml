@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PAYLOAD
+  labels:
+    app: POD
+    version: VERSION
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: POD
+      version: VERSION
+  template:
+    metadata:
+      labels:
+        app: POD
+        version: VERSION
+    spec:
+      containers:
+        - name: PAYLOAD-deploy
+          image: registry.cn-beijing.aliyuncs.com/asm_repo/http_springboot_VERSION:1.0.0
+          env:
+            - name: HTTP_HELLO_BACKEND
+              value: "NEXT_SVC.NS.svc.cluster.local"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8001

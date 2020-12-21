@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: CUR_SVC
+  labels:
+    app: CUR_SVC
+spec:
+  ports:
+    - port: 8001
+      name: http
+  selector:
+    app: POD

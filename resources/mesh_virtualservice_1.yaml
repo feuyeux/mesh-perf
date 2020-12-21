@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: CUR_VS
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - GW
+  http:
+    - match:
+        - port: 8001
+      route:
+        - destination:
+            host: CUR_SVC
+            subset: VERSION
