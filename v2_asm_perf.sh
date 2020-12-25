@@ -5,7 +5,7 @@ SCRIPT_PATH="$(
     cd "$(dirname "$0")" >/dev/null 2>&1
     pwd -P
 )/"
-cd "$SCRIPT_PATH/batch_scripts" || exit
+cd "$SCRIPT_PATH/scripts" || exit
 
 source ../config
 alias k="kubectl --kubeconfig $USER_CONFIG"

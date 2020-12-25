@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 # shellcheck disable=SC2004 disable=SC2086 disable=SC2139 disable=SC2039
-set -e
+
 SCRIPT_PATH="$(
     cd "$(dirname "$0")" >/dev/null 2>&1
     pwd -P
 )/"
-cd "$SCRIPT_PATH/batch_scripts" || exit
+cd "$SCRIPT_PATH/scripts" || exit
 
 . ../config
 alias k="kubectl --kubeconfig $USER_CONFIG"
@@ -19,11 +19,11 @@ clean() {
     echo "cleaning testing environment..."
     k delete namespace $NS >/dev/null 2>&1
     m delete namespace $NS >/dev/null 2>&1
-    sleep 2.5
+    sleep 15
 }
 
 init() {
-    clean    
+    clean
     echo "creating testing environment..."
     k create ns $NS
     k label ns $NS istio-injection=enabled
@@ -33,6 +33,8 @@ init() {
 }
 
 init
+
+set -e
 echo "init done"
 echo "" >$SVC_FILE
 echo "" >$DEPLOY_FILE
